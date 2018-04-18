@@ -1,7 +1,6 @@
 on run {input, parameters}
 	tell application "Finder"
 		set dir_path to quoted form of (POSIX path of (folder of the front window as alias))
-		--set folder_name_string to (folder of the front window as alias)
 	end tell
 	tell application "iTerm2"
 	    set n_windows to count of windows
