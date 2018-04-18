@@ -1,0 +1,27 @@
+on run {input, parameters}
+	tell application "Finder"
+		set dir_path to quoted form of (POSIX path of (folder of the front window as alias))
+		--set folder_name_string to (folder of the front window as alias)
+	end tell
+	tell application "iTerm2"
+	    set n_windows to count of windows
+		if n_windows > 0 then
+			tell current window
+				create tab with default profile
+				tell current session
+					write text "cd " & dir_path
+					write text "jupyter notebook"
+				end tell
+			end tell
+		else 
+			create window with default profile
+			tell current window
+				create tab with default profile
+				tell current session
+					write text "cd " & dir_path
+					write text "jupyter notebook"
+				end tell
+			end tell
+		end if
+	end tell
+end run
